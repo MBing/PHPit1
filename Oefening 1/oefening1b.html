@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
-
-	<head>
-	
+	<head>	
 		<meta charset="utf-8">
-		<title>oefening 1 b</title>
-        <script>
-            innerHTML('<p>Dit is mijn eerste kennismaking met Javascript.</p>');
-        </script>
+		<title>oefening 1 b</title>    
 	</head>
-
 	<body>
-
-
-		
+		<h1 id="heading1"></h1>
+        <p id="paragraph1"></p>
+        <script>
+            document.getElementById('heading1').innerHTML = "Oefening 1";
+            document.getElementById('paragraph1').innerHTML = 'Dit is mijn eerste kennismaking met Javascript.';
+        </script>
 	</body>
 </html>
