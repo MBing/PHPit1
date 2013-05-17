@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Titel</title>
+		<script>
+        var x, test;
+        x = '';
+        test = prompt("Geef een waarde in: (Kies tussen: hello, world, javascript, waarde >= 6, !javascript, waarde >= 5 & <= 10)");
+
+        if (test === "javascript") {
+            x += "Dit is een boodschap die enkel wordt getoond als de waarde van de variabele test gelijk is aan javascript";
+        } 
+        if (test >= 6) {
+            x += "Dit is een boodschap die enkel wordt getoond als de waarde van de variabele test groter of gelijk is aan 6<br>";
+        } 
+        if (test !== "javascript") {
+            x += "Dit is een boodschap die enkel wordt getoond als de waarde van de variabele test niet gelijk is aan javascript<br>";
+        } 
+        if (test >= 5 && test <= 10) {
+            x += "Dit is een boodschap die enkel wordt getoond als de waarde van de variabele test groter of gelijk is aan 5 EN kleiner of gelijk aan 10<br>";
+        } 
+        if (test === "hello" || test === "world") {
+            x += "Dit is een boodschap die enkel wordt getoond als de waarde van de variabele test gelijk is aan hello OF world<br>";
+        }
+        document.write(x);
+        </script>
+	</head>
+	<body>
+
+
+		
+	</body>
+</html>
