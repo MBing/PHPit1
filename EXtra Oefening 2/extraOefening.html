@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Titel</title>
+        <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .man, .vrouw {
+            display: none;
+            width: 30px;            
+            position: fixed;
+            top: 135px;
+            -webkit-transition:All 1s ease;
+            -moz-transition:All 1s ease;
+            -o-transition:All 1s ease;
+            transition:All 1s ease;
+            
+            -webkit-transform: scale(1) translate(10px);
+            -moz-transform: scale(1) translate(10px);
+            -o-transform:scale(1) translate(10px);
+            -ms-transform: scale(1) translate(10px);
+            transform: scale(1) translate(10px);
+        }
+        .man:hover, .vrouw:hover {
+            -webkit-transform: scale(0.67) translate(0px);
+            -moz-transform: scale(0.67) translate(0px);
+            -o-transform: scale(0.67) translate(0px);
+            -ms-transform: scale(0.67) translate(0px);
+            transform: scale(0.67) translate(0px);
+        }
+        .mv {
+            max-width: 100%;
+        }
+        .man {
+            left: 200px;
+        }
+        .vrouw {
+            left: 380px;
+        }
+        
+        </style>
+		
+	</head>
+	<body>
+            <img class="mv" src="img/man_vrouw.jpg" onclick="Gender()">
+            <img id="man" class="man" src="img/heart-icon.png">
+            <img id="vrouw" class="vrouw" src="img/heart-icon.png">
+        <script>
+        function Gender() {
+            var gender = prompt('Geef het geslacht in: (m/v)');
+            var gender2 = gender.toLowerCase();
+
+            if (gender2 === 'm') {
+                //via css visible maken
+                document.getElementById('man').style.display = 'inline';
+                document.getElementById('vrouw').style.display = 'none'; 
+            } else if (gender2 === 'v') {
+                document.getElementById('man').style.display = 'none';
+                document.getElementById('vrouw').style.display = 'inline'
+            } else {
+                alert(gender + ' = Geen hartje voor beiden dus!');
+            }
+        }
+        </script>		
+	</body>
+</html>

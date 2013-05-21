@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        
+    </head>
+    <body>
+
+        <div id="result"></div>
+        <script>
+
+        doeBereken(prompt('Geef getal1 in: '), prompt('Geef getal2 in: '));
+        function doeBereken(getal1, getal2) {
+            var resultaat = getal1 * getal2;
+            return showResult(resultaat);
+        }
+        function showResult(res) {
+            document.getElementById('result').innerHTML = res;
+            alert(res);
+        }
+        </script>
+    </body>
+</html>

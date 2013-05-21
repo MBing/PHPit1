@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Titel</title>
+		<script>
+        var fav = confirm('Wenst u deze pagina toe te voegen aan uw internet favorieten?');
+
+        if (fav) {
+            alert('Deze pagina is toegevoegd aan uw favorieten');
+        } else {
+            alert('Deze pagina is niet toegevoegd aan uw favorieten');
+        }
+
+        // extra 1:
+        if (confirm('Wenst u deze pagina toe te voegen aan uw internet favorieten?')) {
+            alert('Deze pagina is toegevoegd aan uw favorieten');
+        } else {
+            alert('Deze pagina is niet toegevoegd aan uw favorieten');
+        }
+
+        // extra 2
+
+        (confirm('Wenst u deze pagina toe te voegen aan uw internet favorieten?')) ? alert('Deze pagina is toegevoegd aan uw favorieten') : alert('Deze pagina is niet toegevoegd aan uw favorieten');
+        </script>
+	</head>
+	<body>
+
+
+		
+	</body>
+</html>

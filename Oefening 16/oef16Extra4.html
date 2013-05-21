@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        
+    </head>
+    <body>
+        <input type="button" onclick="addToFavorites();" value="Add this site">
+        <div id="result"></div>
+        <script>
+
+        function addToFavorites() {
+            var fav = confirm('Add http://www.google.be to favorites?')
+            if (fav) {
+                return doeMee('http://www.google.be');
+            } else {
+                return doeNietMee();
+            }
+
+        }
+        function doeMee(url) {
+            alert(url + " is toegevoegd aan de Internet Favorieten. U mag deelnemen aan de wedstrijd.");
+        }
+        function doeNietMee() {
+            alert("Helaas, dan mag u niet meedoen aan de wedstrijd.");
+        }
+
+        </script>
+    </body>
+</html>
