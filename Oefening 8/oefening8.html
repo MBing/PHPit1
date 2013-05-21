@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Titel</title>
+		<script>
+        var merk, output;
+        merk = prompt('Geef een merk in:');
+        merk = merk.toLowerCase();
+        // if (merk === 'bmw') {
+        //     output = 'BMW is Duits';
+        // } else if (merk === 'renault') {
+        //     output = 'Renault is Frans';
+        // } else {
+        //     output = 'Het is niet gekend in onze database van welk land het opgegeven merk '+ merk + ' afkomstig is';
+        // }
+        
+        //of via een switch:
+        switch (merk) {
+            case 'bmw':
+                output = 'BMW is Duits'
+                break;
+            case 'renault':
+                output = 'Renault is Frans'
+                break;
+            default:
+                output = 'Het is niet gekend in onze database van welk land het opgegeven merk '+ merk + ' afkomstig is'
+        }
+
+        document.write(output);
+        </script>
+	</head>
+	<body>
+
+
+		
+	</body>
+</html>
