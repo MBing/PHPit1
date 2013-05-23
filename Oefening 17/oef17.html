@@ -9,17 +9,21 @@
 
         <div id="result"></div>
         <script>
-        var getal1, getal2, resultaat;
+        var getal1, getal2;
         getal1 = prompt('Geef getal1 in: ');
         getal2 = prompt('Geef getal2 in: ');
-        doeBereken(getal1, getal2);
+        showResult(getal1, getal2);
+        // Extra 1:
+        /*showResult(prompt('Geef getal1 in: '), prompt('Geef getal2 in: '));*/
+
         function doeBereken(getal1, getal2) {
-            resultaat = getal1 * getal2;
-            showResult();
+            return getal1 * getal2;
+            
         }
         function showResult() {
+            var resultaat = doeBereken(getal1, getal2);
             document.getElementById('result').innerHTML = resultaat;
-            alert(resultaat);
+            //alert(resultaat);
         }
         </script>
     </body>

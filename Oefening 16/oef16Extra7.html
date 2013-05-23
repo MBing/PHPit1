@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+
+    </head>
+    <body>
+        <div id="div1">5</div>
+        <div id="div2">10</div>
+        <script>
+        var div1, div2;
+        div1 = parseInt(document.getElementById('div1').innerHTML);
+        div2 = parseInt(document.getElementById('div2').innerHTML);
+        vermenigvuldig(div1, div2);
+        deling(div1, div2);
+        function vermenigvuldig(div1, div2) {
+            showResult(div1 * div2);
+        }
+
+        function deling(div1, div2) {
+            showResult(div1 / div2);
+        }
+
+        function showResult(result) {
+            alert(result);
+        }
+        </script>
+    </body>
+</html>
