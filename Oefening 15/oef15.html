@@ -9,18 +9,34 @@
 
         <div id="result"></div>
 		<script>
-        var getal1, getal2, resultaat;
+        var getal1, getal2;
         getal1 = prompt('Geef getal1 in: ');
         getal2 = prompt('Geef getal2 in: ');
-        doeBereken(getal1, getal2);
-        function doeBereken(getal1, getal2) {
+        //eerste oefening functie        
+        //doeBereken(getal1, getal2);
+        /*function doeBereken(getal1, getal2) {
             resultaat = getal1 * getal2;
             showResult();
+        }*/
+        //eerste functie showResult
+        /*function showResult() {
+            document.getElementById('result').innerHTML = resultaat;
+            alert(resultaat);
+        }*/
+
+        //tweede poging functies via doorgeven van parameter
+        doeBereken(getal1, getal2);
+        function doeBereken(getal1, getal2) {
+            this.getal1 = getal1;
+            this.getal2 = getal2;
+            this.resultaat = this.getal1 * this.getal2;
+            showResult(this.resultaat);
         }
-        function showResult() {
+        function showResult(resultaat) {
             document.getElementById('result').innerHTML = resultaat;
             alert(resultaat);
         }
+
         </script>
 	</body>
 </html>
