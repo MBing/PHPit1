@@ -24,18 +24,21 @@
     <body>
         <script>
         var rij = prompt("Geef een aantal rijen in: ");
-        var kol = prompt("Geef een aantal kolommen in: ");
-        
+        var kol = prompt("Geef een aantal kolommen in: ");   
         var output = '<table>';
-            for(var i = 1; i <= rij; i++) {
+            //via een while oef 18 uitwerken
+            var i = 0;
+            while(rij > i) {
                 output += "<tr>";
-                    for(var j = 1; j <= kol; j++) {
-                    output += "<td> " + i*j + "</td>";
+                var j = 0;
+                    while(kol > j) {
+                       output += "<td>" +i*j + "</td>";
+                       j++;
                     }
                 output += "</tr>";
+                i++;
             }
         output += "</table>"
-        
         document.write(output);
         </script>
 
