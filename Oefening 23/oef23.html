@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Oefening 16 - extra 7</title>
+		<script>
+		function rekenmachine(g1,g2,operator) {
+			if ( (!isNaN(g1)) && (!isNaN(g2)) ) {
+				var result;
+
+				switch(operator) {
+					case "*":
+					case "vermenigvuldiging":
+						result=g1*g2;
+						showResult(result);
+						break;
+					case "+":
+					case "optelling":
+						result=parseInt(g1)+parseInt(g2);
+						showResult(result);
+						break;
+					case "/":
+					case "deling":
+						result=g1/g2;
+						showResult(result);
+						break;
+					case "-":
+					case "aftrekking":
+						result=g1-g2;
+						showResult(result);
+						break;
+					default:
+						result="De berekening heeft niet plaatsgevonden";
+						showResult(result);
+					}
+			} else {
+				alert("Dit waren niet allebei een numerieke waarde!");
+			} 
+		}
+
+		function showResult(result)
+		{
+			alert(result);
+		}
+		</script>
+	</head>
+	<body>
+
+	<script>
+	var g1 = parseFloat(prompt("Geef een eerste getal"));
+	var g2 = parseFloat(prompt("Geef een tweede getal"));
+	var operator = prompt("Geef een berekeningsoperator");
+
+	rekenmachine(g1,g2,operator);
+	</script>
+	</body>
+</html>

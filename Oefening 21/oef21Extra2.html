@@ -9,10 +9,10 @@
         var getalTot = getal;
         var output = '';
         //oefening op break
-        function evenGetallen(getal) {
-            var i=0;
+        function priemGetallen(getal) {
+            var i=2;
             while(getalTot >= i) {
-                while (i % 2 === 0) {
+                while (i % 2 !== 0 || i === 2) {
                     output += " "+i;                    
                     break;
                 }
@@ -20,7 +20,7 @@
             }
             document.write(output);
         }
-        evenGetallen(getal);
+        priemGetallen(getal);
         </script>
     </head>
     <body>
