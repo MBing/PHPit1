@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        td,tr {
+            border: 1px solid black;
+        }
+        td {
+            padding: 15px;
+        }
+        tr:nth-child(even) {
+            background: blue;
+            color: white;
+        }
+        </style>
+    </head>
+    <body>
+        <script>
+        var rij = prompt("Geef een aantal rijen in: ");
+        var kol = prompt("Geef een aantal kolommen in: ");   
+        if (rij !== '0' || kol !== '0') {
+            var output = '<table>';
+            //via een do while oef 18 uitwerken en enkele extra mogelijkheden voor controle
+            var i = 0;
+            do {
+                if (rij !== 0) {
+                    output += "<tr>";
+                    var j = 0;
+                        if (kol !== 0) {
+                            do {
+                            output += "<td>" +i*j + "</td>";
+                            j++;
+                            } while(kol > j);
+                        }
+                        
+                    output += "</tr>";
+                    i++;
+                }
+                
+            }   
+            while(rij > i);
+            output += "</table>"
+            document.write(output);
+        } else {
+            document.write("There was no table defined, the row and column where set at: "+ rij + " "+ kol);
+        }
+        
+        </script>
+
+    </body>
+</html>
