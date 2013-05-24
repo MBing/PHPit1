@@ -13,17 +13,14 @@
         function addToFavorites() {
             var fav = confirm('Add http://www.google.be to favorites?')
             if (fav) {
-                return doeMee('http://www.google.be');
+                showResult("http://www.google.be is toegevoegd aan de Internet Favorieten. U mag deelnemen aan de wedstrijd.");
             } else {
-                return doeNietMee();
+                showResult("Helaas, dan mag u niet meedoen aan de wedstrijd.");
             }
+        }
 
-        }
-        function doeMee(url) {
-            alert(url + " is toegevoegd aan de Internet Favorieten. U mag deelnemen aan de wedstrijd.");
-        }
-        function doeNietMee() {
-            alert("Helaas, dan mag u niet meedoen aan de wedstrijd.");
+        function showResult(message) {
+            alert(message);
         }
 
         </script>
