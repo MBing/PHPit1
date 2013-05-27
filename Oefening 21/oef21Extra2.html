@@ -6,20 +6,25 @@
         <script>
         var getal = prompt("Geef een getal in:");
         getal = parseInt(getal);
-        var getalTot = getal;
-        var output = '';
         //oefening op break
-        function priemGetallen(getal) {
-            var i=2;
-            while(getalTot >= i) {
-                while (i % 2 !== 0 || i === 2) {
-                    output += " "+i;                    
-                    break;
-                }
-                i++
+            function priemGetallen(getal) {          
+                var i, j, is_prime;
+                i = 3;
+                document.write('2 ');
+                while ( i<=getal ) {
+                    is_prime = true;
+                    j = 2;
+                    while ( j<=i/2 ) {
+                       is_prime = i%j > 0;
+                       if (!is_prime) break;
+                       j++;
+                    }
+                    if (is_prime)
+                       document.write( " "+ i);
+                    i += 2;
+               }
             }
-            document.write(output);
-        }
+            
         priemGetallen(getal);
         </script>
     </head>
