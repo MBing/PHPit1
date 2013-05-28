@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Titel</title>
+        <style>
+        #login {
+            background-color: brown;
+            color: white;
+            margin: 0 auto;
+            width: 400px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        label, input[type='submit'] {
+            display: inline-block;
+            text-align: right;
+            width: 150px;
+        }
+        input[type='submit'] {
+            text-align: center;
+            padding: 2px;
+            position: relative;
+            left: 60%;
+        }
+        input[type='submit']:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .checked {
+            background: red;
+            color: white;
+        }
+        </style>
+        <!-- Using some jquery for less code and other benefits -->
+        <script src="jquery.js"></script>
+		<script>
+        $(document).ready(function() {
+            $('input').on('blur', function() {
+                var waarde = $(this).val();
+                if(waarde.length > 0) {
+                    $(this).removeClass('checked');
+                } else {
+                    $(this).addClass('checked');
+                }
+            })
+        })
+        </script>
+	</head>
+	<body>
+        <form id="login" action="js_form_ontvanger.html">
+            <label for="uname">User Name: </label>
+            <input type="text" id="uname" required>
+            <label for="pword">Password (min 8 char): </label>
+            <input type="password" id="pword" pattern=".{8,}" required> <!-- min length via pattern voor oef 25-2 -->
+            <input type="submit" value="Aanmelden">
+        </form>
+
+		
+	</body>
+</html>

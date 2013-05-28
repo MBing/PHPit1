@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        <style>
+        #container {
+            margin: 0 auto;
+            padding: 0;
+            width: 80%;
+        }
+        #text {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            color: black;
+        }
+        
+        </style>
+        
+    </head>
+    <body>
+        <div id="container">
+            <section>
+                <h1>Select a new value to change the text.</h1>
+                <select id="fontFam" onchange="selFontFam(this)">
+                    <option>Arial</option>
+                    <option>Verdana</option>
+                    <option>Tahoma</option>
+                </select>
+
+                <select id="fontSize" onchange="selFontSize(this)">
+                    <option>10px</option>
+                    <option>12px</option>
+                    <option>14px</option>
+                </select>
+
+                <select id="fontColor" onchange="selFontColor(this)">
+                    <option>black</option>
+                    <option>red</option>
+                    <option>blue</option>
+                </select>
+
+            </section>
+            <section>
+                <div id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id erat ac leo vestibulum porta ut nec tellus. Donec ut dolor nisi, quis pulvinar sapien. Sed ac odio sed tellus cursus ultrices nec eget sapien. Pellentesque in erat et leo pellentesque consectetur in eget neque. Praesent quis elit vel nisi porttitor eleifend nec sit amet leo. Pellentesque volutpat pharetra mi non tristique. Donec et libero ante. Nulla placerat ultrices elit eget aliquam. Ut nec nisi lectus, a dictum turpis. Vestibulum non ante justo. Maecenas adipiscing hendrerit lectus, sed dignissim metus lacinia in. Phasellus arcu leo, fermentum a eleifend nec, ultrices nec purus.
+                </div>
+            </section>
+        </div>
+        <script>
+            function selFontFam(element) {
+                //console.log(element.options[element.selectedIndex].value);
+                switch(element.options[element.selectedIndex].value) {
+                    case 'Arial':
+                        output = 'Arial';
+                        break;
+                    case 'Verdana':
+                        output = 'Verdana';
+                        break;
+                    case 'Tahoma':
+                        output = 'Tahoma';
+                        break;
+                    default:
+                        output = 'sans-serif';
+                }
+            document.getElementById('text').style.fontFamily = output;
+            } 
+
+            function selFontSize(element) {
+                //console.log(element.options[element.selectedIndex].value);
+                switch(element.options[element.selectedIndex].value) {
+                    case '10px':
+                        output = '10px';
+                        break;
+                    case '12px':
+                        output = '12px';
+                        break;
+                    case '14px':
+                        output = '14px';
+                        break;
+                    default:
+                        output = '1em';
+                }
+            document.getElementById("text").style.fontSize= output;
+            } 
+
+            function selFontColor(element) {
+                //console.log(element.options[element.selectedIndex].value);
+                switch(element.options[element.selectedIndex].value) {
+                    case 'black':
+                        output = 'black';
+                        break;
+                    case 'red':
+                        output = 'red';
+                        break;
+                    case 'blue':
+                        output = 'blue';
+                        break;
+                    default:
+                        output = 'black';
+                }
+            document.getElementById("text").style.color= output;
+            } 
+        </script>
+    </body>
+</html>

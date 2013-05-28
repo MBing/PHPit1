@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        <script>
+       
+        function toggleBulb(element) {
+            //var element = document.getElementById('bulb'); //niet nodig dmv 'this'
+            if(element.src.match('bulboff')) {
+                element.src = 'bulbon.png';
+            } else {
+                element.src = 'bulboff.png';
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <img id="bulb" onclick="toggleBulb(this)" alt="light bulb" src="bulboff.png">
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Titel</title>
+        <style>
+        #form {
+            background-color: brown;
+            color: white;
+            margin: 0 auto;
+            width: 400px;
+            border-radius: 5px;
+        }
+        label, input[type='submit'] {
+            display: inline-block;
+            text-align: right;
+            width: 150px;
+        }
+        input[type='submit'] {
+            float: right;
+            padding: 2px;
+            border-radius: 3px;
+        }
+        input[type='submit']:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        </style>
+        <!-- Using some jquery for less code and other benefits -->
+        <script src="jquery.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('#foto').hide();
+            $('#cSubmit').on('click', function() {
+                    $('#foto').toggle();
+                    if($(this).val() === 'Toon Foto') {
+                        $(this).val('Verberg Foto'); 
+                    } else {
+                        $(this).val('Toon Foto');
+                    }
+                                   
+            });
+        });
+        </script>
+    </head>
+    <body>
+        <div id="form">
+            <label for="cMark">Merk:</label>
+            <input type="text" id="cMark" placeholder="Morgan">
+
+            <label for="cType">Type:</label>
+            <input type="text" id="cType" placeholder="Eva GT">
+
+            <label for="cColor">Kleur:</label>
+            <input type="text" id="cColor" placeholder="Gray">
+
+            <label for="cMotor">Motor:</label>
+            <input type="text" id="cMotor" placeholder="3000cc">
+
+            <label for="cOptions">Opties:</label>
+            <input type="text" id="cOptions" placeholder="Full Option">
+
+            <input type="submit" id="cSubmit" value="Toon Foto">
+        </div>
+        <div id="foto"><img src="morgan_eva_gt.jpg" alt="Morgan Eva GT car"></div>
+    </body>
+</html>
