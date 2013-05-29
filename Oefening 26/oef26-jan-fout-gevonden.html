@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Oefening 26 extra 2</title>
+        <style type="text/css">
+            .hidden {
+                display: none;
+            }
+        </style>
+        <script type="text/javascript">
+        
+        </script>
+    </head>
+    <body>
+    
+    <div id="output"></div>
+    
+    <script type="text/javascript">
+        var hoofdstukken = prompt("Geef het aantal hoofdstukken.");
+        var secties = prompt("Geef het aantal secties.");
+        
+        function buildInhoudstafel(hfst, sec)
+        {
+            var dump = '';
+
+            for(var i=1;i<=hfst;i++)
+            {
+                dump += '<h1>Hoofdstuk ' + i + '</h1>';
+                
+                for(var j=1;j<=sec;j++)
+                {
+                    dump += '<h2 onclick="showHideP(' + i + ',' + j + ')">Sectie ' + i + '.' + j + '</a></h2><p id="titel' + i + j + '" class="hidden">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>';
+                }
+
+            }
+            
+            return dump;
+        }
+        
+        function showOutput(resultaat)
+        {
+            document.getElementById("output").innerHTML = resultaat;
+        }
+
+        function showHideP(hoofd, sub)
+        {
+            var el = document.getElementById("titel" + hoofd + sub).style;
+            /*checken als het display="block" is eerst, want deze checkt via het style attribuut inline*/
+            if (el.display === "block")
+                el.display = "none";
+            else
+                el.display = "block";                
+        }
+
+        var resultaat = buildInhoudstafel(hoofdstukken,secties);
+        showOutput(resultaat);
+    </script>
+    </body>
+</html>
