@@ -21,19 +21,19 @@
         <div id="container">
             <section>
                 <h1>Select a new value to change the text.</h1>
-                <select onchange="selFontFam(this)">
+                <select id="fontFamily" onchange="changeStyle(this)">
                     <option>Arial</option>
                     <option>Verdana</option>
                     <option>Tahoma</option>
                 </select>
-                
-                <select onchange="selFontSize(this)">
+
+                <select id="fontSize" onchange="changeStyle(this)">
                     <option>10px</option>
                     <option>12px</option>
                     <option>14px</option>
                 </select>
 
-                <select onchange="selFontColor(this)">
+                <select id="color" onchange="changeStyle(this)">
                     <option>black</option>
                     <option>red</option>
                     <option>blue</option>
@@ -45,6 +45,18 @@
             </section>
         </div>
         <script>
+            function changeStyle(e) {
+                var p = document.getElementById('text');
+                var styleProperty = e.id;
+                var styleValue = e.value;
+                console.log(e.id);
+                console.log(e.value);
+                //console.log(p);
+                /*hierbij is het nodig om de selects een id te geven met de waarde zoals ze in css en js moeten weergegeven worden. Opletten bij [] geen punt ertussen gebruiken, het is een var dus ook geen '' nodig!! */
+                p.style[styleProperty] = styleValue;
+                
+            }
+            /* TE VEEL CODE, KAN MAKKELIJKER!
             function selFontFam(element) {
                 //console.log(element.options[element.selectedIndex].value);
                 switch(element.options[element.selectedIndex].value) {
@@ -97,7 +109,7 @@
                         output = 'black';
                 }
             document.getElementById("text").style.color= output;
-            } 
+            } */
         </script>
     </body>
 </html>

@@ -38,15 +38,12 @@
             var sStr = document.getElementById('zoekNaar').value;
             var nextIndex = 0; 
             var match = 0;
-
-            
             /* GEEN .search() gebruiken, maar .indexOf() en zo kan je de index wijzigen*/
-            
-            
             do {
-                nextIndex = sField.indexOf(sStr, nextIndex);
+                nextIndex = sField.indexOf(sStr, nextIndex) + 1;
+                // ook mogelijk ipv + 1, is + sStr.length
                 match += 1;
-                nextIndex += 1;
+                //nextIndex += 1;
             } while(nextIndex !== 0); //aangezien de nextIndex +1 doet moet je 0 checken. 
                                       //Indien hij niets meer kan vinden is het -1
 
