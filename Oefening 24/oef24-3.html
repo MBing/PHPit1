@@ -14,7 +14,6 @@
             font-size: 10px;
             color: black;
         }
-        
         </style>
         
     </head>
@@ -22,24 +21,23 @@
         <div id="container">
             <section>
                 <h1>Select a new value to change the text.</h1>
-                <select id="fontFam" onchange="selFontFam(this)">
+                <select onchange="selFontFam(this)">
                     <option>Arial</option>
                     <option>Verdana</option>
                     <option>Tahoma</option>
                 </select>
-
-                <select id="fontSize" onchange="selFontSize(this)">
+                
+                <select onchange="selFontSize(this)">
                     <option>10px</option>
                     <option>12px</option>
                     <option>14px</option>
                 </select>
 
-                <select id="fontColor" onchange="selFontColor(this)">
+                <select onchange="selFontColor(this)">
                     <option>black</option>
                     <option>red</option>
                     <option>blue</option>
                 </select>
-
             </section>
             <section>
                 <div id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent id erat ac leo vestibulum porta ut nec tellus. Donec ut dolor nisi, quis pulvinar sapien. Sed ac odio sed tellus cursus ultrices nec eget sapien. Pellentesque in erat et leo pellentesque consectetur in eget neque. Praesent quis elit vel nisi porttitor eleifend nec sit amet leo. Pellentesque volutpat pharetra mi non tristique. Donec et libero ante. Nulla placerat ultrices elit eget aliquam. Ut nec nisi lectus, a dictum turpis. Vestibulum non ante justo. Maecenas adipiscing hendrerit lectus, sed dignissim metus lacinia in. Phasellus arcu leo, fermentum a eleifend nec, ultrices nec purus.
@@ -62,7 +60,7 @@
                     default:
                         output = 'sans-serif';
                 }
-            document.getElementById('text').style.fontFamily = output;
+                document.getElementById('text').style.fontFamily = output;
             } 
 
             function selFontSize(element) {
