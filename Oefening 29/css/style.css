@@ -1,0 +1,21 @@
+body {
+    background: gray;
+}
+#container {
+    background: white;
+    width: 80%;
+    margin: 0 auto;
+    min-height: 600px;
+    height: auto;
+}
+.center {
+    margin: 5% 40%;
+}
+
+#cursist {
+    position: relative;
+    top: 80px;
+    text-align: center;
+    color: green;
+    font-size: 20px;
+}
