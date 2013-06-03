@@ -6,6 +6,8 @@
 		<title>Oefening 28</title>
         <link href="./css/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/normalize.css" rel="stylesheet" type="text/css"/>  
+        <link href="css/datepicker.css" rel="stylesheet" type="text/css"/> 
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/jquery.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -26,7 +28,7 @@
                 <fieldset>
                     <legend>Reserveer hier een kamer</legend>
                     <label for="datum">Datum</label>
-                    <input type="text" maxlength="10" class="datepicker-calendar" id="datum" placeholder="dd/mm/yyyy">
+                    <input type="text" maxlength="10" class="datepicker-calendar" id="datum" readonly placeholder="dd/mm/yyyy">
                     <select id="kamer">
                         <option>Selecteer een kamer</option>
                         <option>1-persoons standaard</option>
