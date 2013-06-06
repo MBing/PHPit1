@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+		<title>Oefening 28</title>
+		<style>
+			table
+			{
+				border-collapse:collapse;
+				width:500px;
+				height:300px;
+			}
+			
+			table, td
+			{	
+				text-align:center;
+				border:1px solid black;
+			}
+			
+			.bgBlue 
+			{
+				background-color: blue;
+				color: black;
+			}
+			.bgGreen
+			{
+				background-color: green;
+				color: black;
+			}
+			.bgBlack
+			{
+				background-color: black;
+				color: white;
+			}
+			
+		</style>	
+	</head>
+	<body>
+		<div id="tbl"></div>
+		<script>
+			schrijf();
+			function schrijf () {
+				var x = 1;
+				var mytable = '<table>';
+					for (var i=1; i<=7; i++) {	
+						mytable += '<tr>';
+							for (var j=1; j<=6; j++) {
+								mytable += "<td onclick='selectNum(this)'>" + x + "</td>";
+								x++;
+							}
+						mytable +="</tr>";
+					}	
+				mytable += "</table>";
+				document.write(mytable);
+			};
+
+			function loNumbers(e) {	
+				document.getElementById('tbl').innerHTML = "De lottotrekking van 8 augustus 2011";		
+				var array = [];
+				var ok, reserve, checkNum;
+				whiteBg();
+					for(var i=1 ; i <= 7; i++) {
+						ok = true;
+						var randomGen = Math.ceil((Math.random()*42));
+						for(var j=0; j < array.length; j++) {
+							if (array[j] === randomGen) {
+								ok = false;
+								break;
+							}
+						}
+						checkNum = document.getElementsByTagName('td');
+						
+						if (ok) {
+							array.push(randomGen);
+							//afgaan van de tabel en bij de nr's die in de array steken een kleur toevoegen en andere wissen;
+							checkNum[randomGen-1].className = "bgBlue";
+						} else {
+							i--;
+						}
+					}
+				reserve = array[array.length-1];
+				checkNum[reserve-1].className = 'bgGreen';
+				/*array.sort(function(a,b){return a-b});
+				console.log(array);*/
+			}
+
+			function whiteBg() {
+				for(var i = 0; i < 42; i++){
+					document.getElementsByTagName('td')[i].className = '';
+				}
+			}
+
+			function selectNum(e) {
+				console.log(e);
+				e.className = 'bgBlack';
+				console.log(e[0]);
+			}
+		</script>
+		<button onclick= "loNumbers(event)">Result</button>
+		<input type="submit" value="Lotto Nummers" onclick=""/>
+	</body>
+</html>

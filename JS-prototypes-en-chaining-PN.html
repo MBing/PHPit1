@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Prototyping en chaining</title>
+
+		
+		<style>
+			.container
+			{
+				height:20px;
+				width:200px;
+				background-color:blue;
+				color:white;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<h1>Manueel (de arbeidsintensieve manier)</h1>
+		<div id="container-div-01">Container div 01</div>
+		<div id="container-div-02">Container div 02</div>
+		<div id="container-div-03">Container div 03</div>
+		
+		<h1>Met functies (de iets minder arbeidsintensieve manier)</h1>
+		<div id="container-div-04">Container div 04</div>
+		<div id="container-div-05">Container div 05</div>
+		<div id="container-div-06">Container div 06</div>
+		
+		<h1>Met functies: ultimate flexibility?</h1>
+		<div id="container-div-07">Container div 07</div>
+		<div id="container-div-08">Container div 08</div>
+		<div id="container-div-09">Container div 09</div>
+		
+		<h1>Met prototypes (de minst arbeidsintensieve manier)</h1>
+		<div id="container-div-10">Container div 10</div>
+		<div id="container-div-11">Container div 11</div>
+		<div id="container-div-12">Container div 12</div>
+		
+		<h1>Met prototypes: ultimate flexibility!!!</h1>
+		<div id="container-div-13">Container div 13</div>
+		<div id="container-div-14">Container div 14</div>
+		<div id="container-div-15">Container div 15</div>	
+		
+				
+		<script>
+
+		
+		//	Prototyping 
+		//	----------------------------
+		//	Prototyping wordt gebruikt om objecten van hetzelfde datatype standaard functies te kunnen geven
+		//	Dit werkt op exact dezelfde manier als functies, maar schrijven veel sneller, zijn veel leesbaarder en bieden ultieme flexibiliteit.
+		
+		
+		//	-----------------------------------------------------------------------------------------------------------------
+		//	OPGAVE: Je hebt 3 verschillende divs en je wil zowel de innerHTML als de stijl (background-color: red) aanpassen.
+		//	-----------------------------------------------------------------------------------------------------------------
+		
+		
+		
+		// 	DE EERSTE MANIER, ZONDER FUNCTIES (dom, dom, dom!)
+		//	-------------------------------------------------------------
+		//	Zonder gebruik van functies wordt dit een redelijk arbeidsintensief werkje:
+		
+		var containerElement						=	document.getElementById('container-div-01');
+
+		containerElement.innerHTML					=	containerElement.innerHTML + ' (deze tekst is toegevoegd door JavaScript)';
+		containerElement.style.backgroundColor		=	'red';
+		containerElement.style.color				=	'white';
+		
+
+		var containerElement						=	document.getElementById('container-div-02');
+
+		containerElement.innerHTML					=	containerElement.innerHTML + ' (deze tekst is toegevoegd door JavaScript)';
+		containerElement.style.backgroundColor		=	'red';
+		containerElement.style.color				=	'white';
+		
+
+		var containerElement						=	document.getElementById('container-div-03');
+
+		containerElement.innerHTML					=	containerElement.innerHTML + ' (deze tekst is toegevoegd door JavaScript)';
+		containerElement.style.backgroundColor		=	'red';
+		containerElement.style.color				=	'white';
+		
+		
+		
+		//	DE TWEEDE MANIER, MET FUNCTIES
+		//	-------------------------------------------------------------
+		//	De functie changeDiv zorgt ervoor dat alles maar één keer geschreven hoeft te worden en het volstaat om het element mee te geven met deze functie.
+		//	Opgelost! Snel en simpel. Of dat zou je toch denken...
+		
+		function changeDiv(id)
+		{
+			var containerElement						=	document.getElementById(id);
+		
+			containerElement.innerHTML					=	containerElement.innerHTML + ' (deze tekst is toegevoegd door JavaScript)';
+			containerElement.style.backgroundColor		=	'red';
+			containerElement.style.color				=	'white';
+		}
+		
+		changeDiv('container-div-04');	
+		
+		changeDiv('container-div-05');
+		
+		changeDiv('container-div-06');
+		
+		
+		//	DE DERDE MANIER, MET FUNCTIES & FLEXIBILITEIT (???)
+		//	-------------------------------------------------------------
+		//	Probleem: de klant wil dat de achtergrondkleur van de tweede div niet verandert en dat in de derde div geen tekst wordt toegevoegd.
+		//	Oplossing: je zou je functie kunnen uitbreiden door allerlei argumenten mee te geven die dit instellen:
+		
+			function changeDiv(id, changeHTML, changeStyle)
+			{
+
+				var containerElement						=	document.getElementById(id);
+			
+				// Als de changeHTML parameter niet als een argument wordt meegegeven of hij is false, dan mag de innerHTML niet veranderd worden
+				if (changeHTML !== 'undefined' && changeHTML !== false)
+				{
+					containerElement.innerHTML					=	containerElement.innerHTML + ' (deze tekst is toegevoegd door JavaScript)';
+				}
+				
+				// Als de changeStyle parameter niet als een argument wordt meegegeven of hij is false, dan mag de innerHTML niet veranderd worden
+				if (typeof changeStyle !== 'undefined' && changeStyle !== false)
+				{
+					containerElement.style.backgroundColor		=	'red';
+					containerElement.style.color				=	'white';
+				}
+			}
+			
+			// 	Wow, dit wordt ingewikkeld, hoofd erbij houden dus!
+			changeDiv('container-div-07', true, true)
+			changeDiv('container-div-08', false, true)
+			changeDiv('container-div-09', true)
+			//	Maar oef, alles werkt zoals het moet, voeten op tafel en klaar is kees.
+			
+			
+			//	Een jaar later. De klant vraagt om wat aanpassingen te doen. De derde div moet nu ook een aangepaste tekst hebben en er moet een vierde div bijkomen die enkel een rode achtergrondkleur en een witte tekstkleur heeft.	
+			// Euh, ok, even denken. Hoe werkte die changeDiv functie nu ook alweer? Het meegeven van dat ID, dat weet je nog, maar die true en false? Wat betekenen die in godsnaam? Even terug in de code duiken en achterhalen wat de functie changeDiv allemaal doet. Na heel wat code herlezen te hebben, maar vooral lang proberen vind je dan toch de oplossing. Je vloekt eens diep. Verwarrende code zeg!
+		
+		
+		
+		//	DE VIERDE MANIER, MET PROTOTYPES (en chaining)
+		//	-------------------------------------------------------------
+		//	De oplossing voor al deze kopzorgen? Je werkt met prototypes. Dit zijn functies die automatisch aan een object type (document, window, object, array, HTMLElement, zelf gedefinieerde objecten, ...) toegevoegd kunnen worden. 
+		// 	Prototypes zijn functies die toegepast worden op het element dat ze aanspreekt en we kennen ze al héél lang. Denk maar aan array.length of string.toUpperCase(). 
+		//	Dit zijn prototypes die standaard in JavaScript zitten, maar uiteraard kan je deze prototypes ook zelf verzinnen.
+
+
+		// 	We maken een prototype aan op het algemene HTMLElement object en we noemen dit prototype appendText.
+		//	Dit wil zeggen dat we nu appendText() op eender welk HTML element kunnen toepassen.
+		//	Het prototype keyword moet je enkel schrijven wanneer je een prototype definieert. Bij het oproepen laat je 'prototype' gewoon weg.
+		
+		//	Aan deze functie kan je een parameter meegeven, de string. Deze string wordt dan toegevoegd aan het element dat deze functie heeft opgeroepen.
+		HTMLElement.prototype.appendText	= 	function(string)	
+												{	
+												
+													// 	ER ZIJN TWEE DINGEN WAAR JE OP MOET LETTEN:
+
+													// 	NUMERO UNO
+													//	-------------------
+													//	Door middel van het this keyword krijg je toegang tot het element dat de functie heeft opgeroepen. 
+													// 	Dit is vergelijkbaar met <div onclick="doeIets(this)"></div> waarbij this ook een referentie is naar het element dat de functie heeft opgeroepen.
+													//	Het voordeel bij prototypes is dat je deze this niet meer moet meegeven als argument, zoals hierboven, maar onmiddellijk toegankelijk is vanuit de functie zelf
+													this.innerHTML	+=	string;
+													
+													// 	NUMERO DOS
+													//	-------------------
+													// Deze 'return this' is niet verplicht, maar kan wel uiterst nuttig blijken.
+													// Door this te returnen aan de functie, wordt de caller appendText() het element dat het heeft opgeroepen.
+													// Hierdoor kan je 'chainen', dit wil zeggen dat je verschillende prototype functies na mekaar kan uitvoeren.
+													return this;
+												}
+		
+		//	Dit protoytype neemt de css attribuutwaarde (in JavaScript notatie, dus niet background-color, maar wel backgroundColor) en de value als parameter en past ze toe op het element.
+		HTMLElement.prototype.changeStyle	=	function(CSSAttribute, value)
+												{
+													//	We moeten gebruik maken van this.style[CSSAttribute] en niet van this.style.CSSAttribute
+													//	.CSSAttribute roept het .CSSAttribute prototype op in plaats van de effectieve attribuutwaarde die met het oproepen van de functie changeStyle als attribute is meegegeven.
+													// 	Vermits dit prototype niet bestaat, zal hij in het geval van this.style.CSSAttribute undefined teruggeven en dat is niet de bedoeling.
+													this.style[CSSAttribute]	=	value;
+													
+													return this;
+												}
+
+		// 	En we voeren de prototypes als volgt uit:
+		// 	Het voordeel is dat we de prototypes in eender welke volgorde kunnen aanspreken en er zelfs mogen weglaten of toevoegen.		
+		document.getElementById('container-div-10').changeStyle('color', 'white').appendText(' (deze tekst is toegevoegd door JavaScript)').changeStyle('backgroundColor', 'red');
+		document.getElementById('container-div-11').changeStyle('backgroundColor', 'blue').appendText(' (deze tekst is toegevoegd door JavaScript)').changeStyle('color', 'white');
+		document.getElementById('container-div-12').appendText(' (deze tekst is toegevoegd door JavaScript)').changeStyle('backgroundColor', 'green').changeStyle('color', 'white').changeStyle('fontSize', '20px');	
+		
+			
+			
+		
+		//	DE VIJFDE MANIER: PROTOTYPES, THE ULTIMATE FLEXIBILITY & READABILITY (slim, slim, slim!)
+		//	------------------------------------------------------------------------------------------
+		//	Flexibel is het al zeker, maar je merkt dat het al snel onleesbare spagetticode wordt.
+		// 	Daarom kan je de prototypes nog iets bijschaven om ze leesbaar te houden
+		
+		
+		//	Het lastige is dat we het element telkens moeten aanspreken d.m.v document.getElementById('container-div-nummer'), maar ook dit kan korter. 
+		//	Niet door middel van een prototype, maar door middel van een simpele functie:
+		function element(selector)
+		{	
+			// Het return keyword is essentieel in deze functie, omdat het het geselecteerde element teruggeeft aan de caller
+			return	document.getElementById(selector);
+		};
+		
+		//	Soms wil je tekst toevoegen, maar soms ook volledig vervangen.
+		//	Je kan een additionele parameter toevoegen die beslist of de tekst vervangen of toegevoegd moet worden.
+		//	Let hier wel mee op, in dit geval blijft het nog redelijk leesbaar, maar het kan al snel een wildgroei worden zoals bij de functie uit methode 3
+		HTMLElement.prototype.text			= 	function(string, append)	
+												{
+													if (typeof append === 'undefined' || append !== 'append' ) 
+													{
+														this.innerHTML	=	string;
+													}
+													else
+													{
+														this.innerHTML	+=	string;
+													}
+													
+													return this;
+												}
+		
+		//	In plaats van twee argumenten mee te geven, geef je een array mee. 
+		//	In deze array zijn de keys gelijk aan de te veranderen CSS property in JavaScript notatie en zijn values gelijk aan de css property values.
+		HTMLElement.prototype.changeStyle	=	function(array)
+												{
+													for (var key in array)
+													{
+														this.style[key]	=	array[key];
+													}
+													return this;
+												}
+
+		// Wauw, leesbaar én flexibel! Danku protoytypes!
+		element('container-div-13').changeStyle({'backgroundColor' : 'red', 'color' : 'white', 'fontSize' : '24px'})
+		element('container-div-14').text('Deze tekst is toegevoegd door JavaScript').changeStyle({'backgroundColor' : 'lightgrey', 'color' : 'red', 'fontSize' : '10px'})
+		element('container-div-15').text(' Deze tekst is toegevoegd door JavaScript', 'append');
+		
+		// En als de klant uiteindelijk zegt: "Ik wil de eerste div groen, de tweede geel, de derde zwart, allemaal in een verschillend lettertype, maar wel allemaal dezelfde fontsize: zo groot mogelijk.", dan doe je vanaf nu rustig je ding met prototypes en ga je daarna volledig ontstrest een koffie drinken en stiekem even genieten van de heerlijke functionaliteit van prototypes!
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+/* Oefening 18 Extra 5 Javascript */
+
+table{
+	border-collapse:collapse;
+}
+
+td, th{
+	width:60px;
+	height:35px;
+	text-align:center;
+	border:1px solid black;
+}
+
+.emtpy{
+	background-color:white;
+}
+
+.selected{
+	background-color:orange;
+}
+
+.winning{
+	background-color:purple;
+}
+
+.pulled{
+	background-color:green;
+}

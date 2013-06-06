@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head> 
+		
+		<meta charset="utf-8">
+		
+		<title>Oefening 29-3 Javascript</title>
+		
+		<link rel="stylesheet" type="text/css" href="css/global.css">
+		
+	</head>
+			
+	<body onload="lotto.table()">
+	
+		<div class="container">
+			<h2>Oefening 29-3 Javascript</h2>
+			
+			<input type="button" value="Lucky Numbers!!!" onclick="lotto.pull()" />
+			<input type="button" value="Kies nieuwe nummers" onclick="lotto.cleanup()" />
+			
+			<p id="date">Lottotrekking van: </p>
+			
+			<div id="tablewrap">
+			</div>
+			
+			<p>Reservegetal: <span id="reservegetal"></span></p>
+		</div>
+	
+		<script src="js/myjs.js"></script>
+
+	</body>
+
+</html>
