@@ -9,11 +9,44 @@
         <link href="./css/style.css" rel="stylesheet">
     </head>
 	<body>
-        <form action="" method="post" onsubmit="gotoURL(); return false">
-            <label for="link">
-            <input type="url" id="link">
-            <input type="submit" value="GO!">
-        </form>
+        <div id="container">
+            <header>
+                <h1>Search the Felix Archive from Antwerp</h1>
+                <h3>Because a JSON file can tell more than its contents</h3>
+            </header>
+
+            <div ="content">
+
+                <form action="" method="post" onsubmit="gotoURL(); return false">
+                    <label for="link">
+                    <input type="url" id="link">
+                    <input type="submit" value="Search the archive">
+                </form>
+            </div> <!-- content -->
+
+            <section>
+                <article data="contentid">
+                    <header><h3 data="title">Hier komt de titel van het werk</h3>
+                        <p data="description"></p>
+                    </header>
+
+                    <div>
+                        <p data="inventorynumber">Stocknummer ofzo</p>
+                        <figure>
+                            <img data ="digitalekopie" src="#" alt="tekst van het werk">
+                            <figcaption><p data="naamagentschap naamfotografen">De auteur van het werk</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                </article>
+            </section>
+
+            <footer>
+                <p>Copyright&copy; by Martin Bing</p>
+            </footer>
+
+        </div> <!-- container -->
         <script src="./js/bootstrap.min.js"></script>
         <script src="./js/jquery.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
