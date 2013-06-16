@@ -4,29 +4,103 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Oefening API Felix Foto Archief</title>
-        <link href="./css/bootstrap-responsive.min.css" rel="stylesheet">
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <!-- <link href="./css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="./css/bootstrap.min.css" rel="stylesheet"> -->
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="./css/style.css" rel="stylesheet">
     </head>
 	<body>
-        <div id="container">
-            <header>
-                <h1>Search the Felix Archive from Antwerp</h1>
-                <h3>Because a JSON file can tell more than its contents</h3>
+        <div id="container-fluid">
+            <header class="header">
+                <h2>Search the Felix Archive from Antwerp</h2>
+                <h5 class="muted">Because a JSON file can tell more than its contents</h5>
             </header>
+        <div class="main pull-left">
 
-            <div ="content">
+        <label for="input-03">Zoek naar een straat die de volgende letters bevat</label>
+        <input type="text" id="input-03" class="search-query" list="adres-03" autocomplete="on">
+        <input type="button" id="container-div-03-button" class="btn btn-primary" value="zoeken">
 
-                <form action="" method="post" onsubmit="gotoURL(); return false">
-                    <label for="link">
-                    <input type="url" id="link">
-                    <input type="submit" value="Search the archive">
-                </form>
-            </div> <!-- content -->
+        <datalist id="adres-03"></datalist>
+        
+        <div id="container-div-03"></div>
+    
+<script>
+function derdeAjaxRequestPopulate() {
+    var url = 'http://api.antwerpen.be/v1/spectql/cultuur/fotoverzamelingfelixarchief:json'; 
+    var input = document.getElementById('input-03');
+    var dataList = document.getElementById('adres-03');
+    input.placeholder = 'bezig met verwerken...'
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, true)
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var JSONobject = JSON.parse(xmlhttp.responseText);
+            var archief = JSONobject['spectqlquery']; 
+            var dump = ''
+            
+            for (key in archief) {
+                dump += '<option value="' + archief[key]['title'] + '"></option>';
+            }
+            input.placeholder = '';
+            dataList.innerHTML = dump;
+        }
+    };
+}
+derdeAjaxRequestPopulate();
 
-            <section>
+function derdeAjaxRequest() {
+    var element = document.getElementById('container-div-03');
+    var input = document.getElementById('input-03');
+    var url = "http://api.antwerpen.be/v1/spectql/cultuur/fotoverzamelingfelixarchief{*}?title~'" + input.value + "':JSON";
+    element.innerHTML = 'bezig met verwerken...'
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", url, true)
+    xmlhttp.send();
+    
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var JSONobject = JSON.parse(xmlhttp.responseText);
+            var archief = JSONobject['spectqlquery'];
+            var dump = '<section>';      
+            for (key in archief) {
+                dump += '<article><header><h4>' + archief[key]['title'] + '</h4> <p>' + archief[key]['description'] + ' </p></header><div class="fotoke"><p>' + archief[key]['inventorynumber'] + '</p> <figure> <a class="imgLink" href="' + archief[key]['digitalekopie'] + '&f=detail" target="_blank">Click to view Image</a><figcaption>' + archief[key]['naamfotografen'] + '</figcaption></figure></div></article>';
+                if ( key >= 10 ) break; //will only show the first 10 results
+            }
+            dump += '</section>';
+            element.innerHTML = dump; 
+        }
+    };
+}
+
+document.getElementById('container-div-03-button').onclick = function() {
+    derdeAjaxRequest()
+};
+
+/*function getJPG(url) {
+    var xmlhttp = new XMLHttpRequest();
+    //console.log('urleke ' + url);
+    xmlhttp.open("GET", url, true)
+    xmlhttp.send();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var jpg = 'http://zoeken.felixarchief.be/zAva/';
+            jpg += document.getElementsByTagName('img')[0].getAttribute('src');
+            console.log(' get elements by tag name geeft dit ' + document.getElementsByTagName('img'));
+            console.log('jpg file ' + jpg);
+            return jpg;
+        }
+    };
+    
+}*/
+</script>
+
+
+
+            <!-- <section>
                 <article data="contentid">
-                    <header><h3 data="title">Hier komt de titel van het werk</h3>
+                    <header><h4 data="title">Hier komt de titel van het werk</h4>
                         <p data="description"></p>
                     </header>
 
@@ -34,21 +108,25 @@
                         <p data="inventorynumber">Stocknummer ofzo</p>
                         <figure>
                             <img data ="digitalekopie" src="#" alt="tekst van het werk">
-                            <figcaption><p data="naamagentschap naamfotografen">De auteur van het werk</p>
+                            <figcaption><cite data="naamagentschap naamfotografen">De naam van de fotograaf enzo</cite>
                             </figcaption>
                         </figure>
                     </div>
 
                 </article>
-            </section>
+            </section> -->
+            </div> <!-- main -->
 
-            <footer>
-                <p>Copyright&copy; by Martin Bing</p>
+            <footer class="footer">
+                Copyright&copy; by Martin Bing
             </footer>
 
         </div> <!-- container -->
-        <script src="./js/bootstrap.min.js"></script>
-        <script src="./js/jquery.js"></script>
+        <!-- <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/jquery.js"></script> -->
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
         <script src="./js/script.js"></script>
 	</body>
