@@ -30,14 +30,15 @@ WHERE continent="Europe" AND indepyear > 1925
 		# Toon ook de naam van de Amerikaanse steden waar de levensverwachting lager is dan 60. 
 			# Toon ook de naam en levensverwachting van het land. 
 			# Sorteer alfabetisch op de naam van het land.
-SELECT city.name, lifeexpectancy, country.name FROM city INNER JOIN
+SELECT city.name AS stad, lifeexpectancy, country.name AS country FROM city INNER JOIN 
+# kijkt enkel naar eerste query voor de aliasen, dus na UNION overbodig om AS te gebruiken
 country ON city.countrycode=country.code
 WHERE continent="Europe" AND lifeexpectancy > 60 AND city.population > 200000
 UNION
 SELECT city.name, lifeexpectancy, country.name FROM city INNER JOIN
 country ON city.countrycode=country.code
 WHERE continent="America" AND lifeexpectancy < 60 
-ORDER BY 3
+ORDER BY country
 
 
 # Toon de naam van de Europese landen, de officiële taal & door hoeveel percent van de bevolking ze gesproken wordt
