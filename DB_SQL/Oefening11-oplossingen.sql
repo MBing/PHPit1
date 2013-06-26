@@ -26,8 +26,8 @@ ORDER BY sum_city_pop DESC
 # Toon de gemiddelde populatie van een stad per district per land, sorteer van Z-> A op land en dan op district
 SELECT AVG(city.population) AS sum_city_pop, district, country.name AS country FROM city 
 INNER JOIN country ON city.countrycode = country.code 
-GROUP BY district, country 
-ORDER BY country DESC, district
+GROUP BY country, district
+ORDER BY country DESC, district DESC
 # Toon de gemiddelde populatie per district van de Nederlandse steden sorteer alfabetisch op district
 SELECT AVG(city.population) AS sum_city_pop, district FROM city 
 INNER JOIN country ON city.countrycode = country.code 
