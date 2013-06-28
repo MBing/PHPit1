@@ -23,7 +23,7 @@ WHERE country.name="France" AND city.population >
 # Toon de naam van de steden van alle Afrikaanse landen
 SELECT city.name FROM city INNER JOIN country ON city.countrycode=country.code
 WHERE continent LIKE "%africa%"
-#(SELECT country.name FROM country WHERE continent LIKE "%africa%")
+# country.code IN (SELECT country.name FROM country WHERE continent LIKE "%africa%")
 
 # Toon de naam van het Aziatisch land met de grootste bevolking
 SELECT name FROM city 
