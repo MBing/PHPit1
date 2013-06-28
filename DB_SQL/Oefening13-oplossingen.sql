@@ -67,7 +67,9 @@ SELECT name FROM country WHERE continent LIKE "%africa%" AND lifeexpectancy =
 SELECT name, population FROM country WHERE continent= "asia" AND surfacearea =
 	(SELECT MIN(surfacearea) FROM country WHERE continent = "asia")
 # Toon de naam van de talen die slechts in 1 land gesproken worden (via subquery in FROM)
-SELECT language FROM countrylanguage WHERE (SELECT COUNT(language) FROM countrylanguage GROUP BY language)
+SELECT language FROM 
+(SELECT DISTINCT countrycode, language FROM countrylanguage) AS taal 
+GROUP BY language HAVING count(*) = 1
 # Toon de naam en bevolkingsaantal van de stad met het minste inwoners uit Angola
 SELECT city.name, city.population FROM city INNER JOIN country ON city.countrycode=country.code
 	WHERE country.name="Angola" AND city.population = 
